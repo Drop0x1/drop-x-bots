@@ -1,5 +1,4 @@
 /*
-
   ________.__                        _____.___.___________
  /  _____/|  | _____    ____  ____   \__  |   |\__    ___/
 /   \  ___|  | \__  \ _/ ___\/ __ \   /   |   |  |    |   
@@ -15,21 +14,22 @@
 ║  ## YouTube : https://www.youtube.com/@GlaceYt                         ║
 ║                                                                        ║
 ╚════════════════════════════════════════════════════════════════════════╝
-
-
 */
+
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const yts = require('yt-search');
 const lang = require('../loadlanguage.js'); 
 const musicIcons = require('../UI/icons/musicicons.js');
 
-
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('play')
     .setDescription(lang.findDescription)
-    .addStringOption(option => option.setName('query').setDescription('The search query').setRequired(true)),
+    .addStringOption(option => 
+      option.setName('query')
+        .setDescription('The search query')
+        .setRequired(true)
+    ),
 
   async execute(interaction, client) {
     const query = interaction.options.getString('query');
@@ -48,7 +48,6 @@ module.exports = {
     }
 
     try {
-      // Defer the reply to give more time for processing the search results
       await interaction.deferReply();
 
       const searchResults = await yts(query);
@@ -99,7 +98,6 @@ module.exports = {
         await i.reply({ content: lang.findSongSelected.replace('{title}', video.title), ephemeral: true });
 
         try {
-          // Use distube.play to either start playing or add to the queue
           await client.distube.play(voiceChannel, video.url, {
             member: interaction.member,
             textChannel: interaction.channel,
@@ -128,7 +126,7 @@ module.exports = {
 
     } catch (error) {
       console.error(error);
-      await interaction.followUp('An error occurred while searching for the song.');
+      await interaction.followUp({ content: 'An error occurred while searching for the song.', ephemeral: true });
     }
   },
 };
