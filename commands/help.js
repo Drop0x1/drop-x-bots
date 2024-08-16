@@ -9,10 +9,10 @@
 
 ╔════════════════════════════════════════════════════════════════════════╗
 ║                                                                        ║
-║  ## Created by GlaceYT!                                                ║
+║  ## Created by drop x!                                                ║
 ║  ## Feel free to utilize any portion of the code                       ║
-║  ## DISCORD :  https://discord.com/invite/xQF9f9yUEM                   ║
-║  ## YouTube : https://www.youtube.com/@GlaceYt                         ║
+║  ## DISCORD :                  ║
+║  ## YouTube :                         ║
 ║                                                                        ║
 ╚════════════════════════════════════════════════════════════════════════╝
 
@@ -42,7 +42,7 @@ module.exports = {
     const embed1 = new EmbedBuilder()
       .setTitle('Bot Information')
       .setDescription(
-        `Developed By: **GlaceYT**\n`+
+        `Developed By: **DROP_X**\n`+
         `Node Version: **v20.12.2**\n` +
         `Server Name: **${interaction.guild.name}**\n` +
         `Total Members: **${interaction.guild.memberCount}**\n` +
